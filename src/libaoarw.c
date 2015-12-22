@@ -45,7 +45,7 @@ static struct libusb_device_handle* __openAccessory();
 static struct libusb_device_handle* __openAvailableDevice();
 static int __findEndPoint(struct libusb_device_handle *handle);
 
-enum libaoarw_result libaoarw_initialize(
+LIBAOARW_RESULT libaoarw_initialize(
 	const char *manufacturer,
 	const char *model,
 	const char *description,
@@ -85,19 +85,19 @@ enum libaoarw_result libaoarw_initialize(
 	return LIBAOARW_RES_OK;
 }
 
-void aoa_deinitialize()
+void libaoarw_deinitialize()
 {
 	__disconnect();
 }
 
-enum libaoarw_result libaoarw_read(
+LIBAOARW_RESULT libaoarw_read(
 	unsigned char *buffer,
 	int bufsize,
 	int *readsize,
 	unsigned int timeout)
 {
 	int result=0;
-	enum libaoarw_result ret=LIBAOARW_RES_OK;
+	LIBAOARW_RESULT ret=LIBAOARW_RES_OK;
 	
 	if (g_handle == NULL) {
 		return LIBAOARW_RES_NODEV;
@@ -119,14 +119,14 @@ enum libaoarw_result libaoarw_read(
 	return ret;
 }
 
-enum libaoarw_result libaoarw_write(
+LIBAOARW_RESULT libaoarw_write(
 	unsigned char *buffer,
 	int bufsize,
 	int *writesize,
 	unsigned int timeout)
 {
 	int result=0;
-	enum libaoarw_result ret=LIBAOARW_RES_OK;
+	LIBAOARW_RESULT ret=LIBAOARW_RES_OK;
 	
 	if (g_handle == NULL) {
 		return LIBAOARW_RES_NODEV;

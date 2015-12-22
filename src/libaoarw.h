@@ -5,14 +5,14 @@
 #ifndef __LIBAOARW_H
 #define __LIBAOARW_H
 
-enum libaoarw_result {
+typedef enum libaoarw_result {
 	LIBAOARW_RES_OK=0,
 	LIBAOARW_RES_NODEV,
 	LIBAOARW_RES_SYSERR,
 	LIBAOARW_RES_TIMEOUT
-};
+} LIBAOARW_RESULT;
 
-enum libaoarw_result libaoarw_initialize(
+LIBAOARW_RESULT libaoarw_initialize(
 	const char *manufacturer,
 	const char *model,
 	const char *description,
@@ -22,13 +22,13 @@ enum libaoarw_result libaoarw_initialize(
 
 void libaoarw_deinitialize();
 
-enum libaoarw_result libaoarw_read(
+LIBAOARW_RESULT libaoarw_read(
 	unsigned char *buffer,
 	int bufsize,
 	int *readsize,
 	unsigned int timeout);
 
-enum libaoarw_result libaoarw_write(
+LIBAOARW_RESULT libaoarw_write(
 	unsigned char *buffer,
 	int bufsize,
 	int *writesize,
